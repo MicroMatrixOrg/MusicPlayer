@@ -1,0 +1,9 @@
+/* src/assets/css/audioControl.scss */
+.leftControl {
+  display: flex;
+  align-items: center;
+}
+.leftControl .icon {
+  cursor: pointer;
+}
+/*# sourceMappingURL=MusicPlayer.css.map */

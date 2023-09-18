@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/assets/css/audioControl.scss"],
+  "sourcesContent": [".leftControl {\n  display: flex;\n  align-items: center;\n\n  .icon {\n    cursor: pointer;\n  }\n}"],
+  "mappings": ";AAAA,CAAA;AACE,WAAA;AACA,eAAA;;AAEA,CAJF,YAIE,CAAA;AACE,UAAA;;",
+  "names": []
+}
