@@ -1,7 +1,7 @@
 /*
  * @Author: David
  * @Date: 2022-05-10 11:13:14
- * @LastEditTime: 2023-09-16 17:07:49
+ * @LastEditTime: 2023-11-01 15:01:50
  * @LastEditors: David
  * @Description: 打包运行的脚本
  * @FilePath: /MusicPlayer/scripts/dev.js
@@ -43,10 +43,13 @@ const jsxTransform = () => ({
       {},
       { runtime: "automatic" }
     );
+    const presetEnv = require('@babel/preset-env');
+    const presetTypescript = require('@babel/preset-typescript');
+
 
     build.onLoad({ filter: /\.[j|t]sx$/ }, async (args) => {
       const jsx = await fs.promises.readFile(args.path, "utf8");
-      const result = babel.transformSync(jsx, { plugins: [plugin] });
+      const result = babel.transformSync(jsx, { plugins: [plugin], presets: [presetEnv, presetTypescript], filename: args.path });
       return { contents: result.code };
     });
   },
@@ -89,9 +92,6 @@ const svgBuilder = () => ({
     build.onLoad({ filter: /\.svg$/ }, async (args) => {
       const path = args.path;
       let { svg, fileName } = await findSvgFile(path)
-      // let content = `function svgContent(){
-      //   return \`${svgRes}\`
-      // }`
       let content = `export default  \`${svg}\`;`;
       return { contents: content }
     });
